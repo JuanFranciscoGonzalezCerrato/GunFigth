@@ -15,25 +15,27 @@ export class Bullet extends GameObject {
 	}
 
 	setElement() {
+		// Create the HTML element for the bullet
 		this.bulletElement = document.createElement("div");
 		this.bulletElement.classList.add("bullet-game");
 
-		// Posicionamos la bala en función de la dirección
+		// Position the bullet based on the direction
 		setCustomProperty(this.bulletElement, "left", this.x + "px");
 		setCustomProperty(this.bulletElement, "bottom", this.y + "px");
 
-		// Tiempo que durará la bala en el DOM
+		// Set the duration for the bullet's presence in the DOM
 		setTimeout(() => {
 			this.unableBullet()
 		}, this.timeLife);
 	}
 
 	getElement() {
+		// Return the HTML element of the bullet
 		return this.bulletElement;
 	}
 
 	updateBullet() {
-		// Actualizamos la posición en función de la dirección
+		// Update the position based on the direction
 		if (this.direction === "left") {
 			this.x -= this.velocity;
 		} else if (this.direction === "right") {
@@ -44,7 +46,7 @@ export class Bullet extends GameObject {
 
 	}
 
-	unableBullet(){
+	unableBullet() {
 		this.bulletElement.remove();
 		this.destroyed = true;
 	}
